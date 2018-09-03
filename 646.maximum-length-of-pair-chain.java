@@ -46,7 +46,11 @@ class Solution {
 	Arrays.fill(total, 1);
 	for (int i = 0; i < total.length; i++) {
 		for (int j = i - 1; j >= 0; j--) {
-			total[i] = Math.max(pairs[i][0] > pairs[j][1] ? total[j] + 1 : total[j], total[i]);
+			//total[i] = Math.max(pairs[i][0] > pairs[j][1] ? total[j] + 1 : total[j], total[i]);
+			if (pairs[i][0] > pairs[j][1]) {
+				total[i] = total[j] + 1;
+				break;
+			}
 		}
 	}
 	return total[pairs.length - 1];
